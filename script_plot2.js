@@ -18,9 +18,9 @@ function drawPlot1(data){
             .attr('cy',height/2)
             .attr('r',20)
             .style('fill','blue')
-            .style('fill-opacity', .2);
-
-    console.log('d', data.all_prep);
+            .style('fill-opacity', .008); // for example to make sure they work
+// var plot2 = plot1.select
+//    console.log('d', d.all_prep);
         
 }
 
