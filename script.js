@@ -24,12 +24,8 @@ var plot_1 = plot.append('g')
 	.attr('class','canvas')
 	.attr('id', 'plot_1')
 	.attr('transform','translate('+m.l+','+m.t+')')
-		.style('fill','white');
+	.style('fill','white');
 	// .style('opacity', '.5');
-
-
-
-
 
 
 //Create scrollController
@@ -47,7 +43,6 @@ var scene1 = new ScrollMagic.Scene({
 		reverse:true //should the scene reverse, scrolling up?
 	})
 	.on('enter',function(){
-		//what happens when we 'enter' the scene i.e. #scene-1 reaches the top of the screen
 		console.log('Enter Scene 1');
 		d3.select('#plot').transition().style('background','rgb(200,200,200)');
 	})
@@ -61,14 +56,18 @@ var scene2 = new ScrollMagic.Scene({
 	.on('enter',function(){
 		console.log('Enter Scene 2');
 		d3.select('#plot').transition().style('background','rgb(220,220,220)');
-		d3.select('#scene-3 h3').transition().style('color','rgb(220,0,0)');
-		d3.select('#scene-3 p').transition().style('color','rgb(220,0,0)');
+		// d3.select('#scene-3 h3').transition().style('color','rgb(220,0,0)');
+		// d3.select('#scene-3 p').transition().style('color','rgb(220,0,0)');
+		var text = d3.select('#plot')
+			text.select('h3').html("oiuraiugbaieug")
 	})
 	.on('leave',function(){
 		console.log('Enter Scene 2');
 		d3.select('#plot').transition().style('background','rgb(220,220,220)');
-		d3.select('#scene-3 h3').transition().style('color','rgb(0,0,0)');
-		d3.select('#scene-3 p').transition().style('color','rgb(0,0,0)');
+
+
+		// .transition().style('color','rgb(0,0,0)');
+		// d3.select('#scene-3 p').transition().style('color','rgb(0,0,0)');
 	})
 	.addTo(scrollController);
 
