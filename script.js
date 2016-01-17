@@ -40,7 +40,7 @@ var scene1 = new ScrollMagic.Scene({
 	})
 	.on('enter',function(){
 		console.log('Enter Scene 1');
-		d3.select('#plot').transition().style('background','rgb(200,200,200)');
+		// d3.select('#plot').transition().style('background-image','url("data/NEU_Campus.jpg")');  
 		plot1.attr('visibility', 'hidden');
 		var text = d3.select('#plot')
 			text.select('h3').html("")
