@@ -11,22 +11,18 @@ var plot = d3.select('.canvas')
 	.append('g').attr('class','canvas')
 	.attr('transform','translate('+m.l+','+m.t+')');
 
-var ball = plot.append('circle')
-	.attr('cx',0)
-	.attr('cy',height/2)
-	.attr('r',20)
-	.style('fill','white');
+// var ball = plot.append('circle')
+// 	.attr('cx',0)
+// 	.attr('cy',height/2)
+// 	.attr('r',20)
+// 	.style('fill','white');
 
-var plot_1 = plot.append('g')
+var plot1 = plot.append('g')
 	.attr('width',width+m.l+m.r)
 	.attr('height',height+m.t+m.b)
-	.append('g')
-	.attr('class','canvas')
-	.attr('id', 'plot_1')
-	.attr('transform','translate('+m.l+','+m.t+')')
-	.style('fill','white');
-	// .style('opacity', '.5');
-
+	.attr('class','plot1')
+	.attr('id', 'plot1');
+	// .attr('transform','translate('+m.l+','+m.t+')');
 
 //Create scrollController
 //Step 1: create a global scroll controller
@@ -45,6 +41,10 @@ var scene1 = new ScrollMagic.Scene({
 	.on('enter',function(){
 		console.log('Enter Scene 1');
 		d3.select('#plot').transition().style('background','rgb(200,200,200)');
+		plot1.attr('visibility', 'hidden');
+		var text = d3.select('#plot')
+			text.select('h3').html("")
+
 	})
 	.addTo(scrollController);
 
@@ -56,18 +56,15 @@ var scene2 = new ScrollMagic.Scene({
 	.on('enter',function(){
 		console.log('Enter Scene 2');
 		d3.select('#plot').transition().style('background','rgb(220,220,220)');
-		// d3.select('#scene-3 h3').transition().style('color','rgb(220,0,0)');
-		// d3.select('#scene-3 p').transition().style('color','rgb(220,0,0)');
+		plot1.attr('visibility', 'hidden');
 		var text = d3.select('#plot')
-			text.select('h3').html("oiuraiugbaieug")
+			text.select('h3').html("90% of graduates from Northeastern University are offered full-time jobs within 1 year after graduation")
 	})
 	.on('leave',function(){
 		console.log('Enter Scene 2');
 		d3.select('#plot').transition().style('background','rgb(220,220,220)');
+		
 
-
-		// .transition().style('color','rgb(0,0,0)');
-		// d3.select('#scene-3 p').transition().style('color','rgb(0,0,0)');
 	})
 	.addTo(scrollController);
 
@@ -79,7 +76,15 @@ var scene3 = new ScrollMagic.Scene({
 	.on('enter',function(){
 		console.log('Enter Scene 3');
 		d3.select('#plot').transition().style('background','rgb(240,240,240)');
+
+		plot1.attr('visibility', 'visible');
 	})
+	// .on('leave', function(){
+	// 	plot1.attr('visibility', 'hidden');
+	// })
+
+
+
 	.addTo(scrollController);
 
 
@@ -93,8 +98,11 @@ var scene4 = new ScrollMagic.Scene({
 	})
 	.on('progress',function(e){
 		console.log('Scene 4 progress ' + e.progress);
+		plot1.attr('visibility', 'visible');
+		var text = d3.select('#plot')
+			text.select('h3').html("scene 4 text")
 		//e.progress = 0 at the start of scene; 1 at the end of the scene
-		ball.attr('cx',e.progress*width);
+		// ball.attr('cx',e.progress*width);
 	})
 	.addTo(scrollController);
 

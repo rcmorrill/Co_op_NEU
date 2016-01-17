@@ -7,14 +7,23 @@ var m = {t:250,r:50,b:250,l:50},
 
 
 
+function drawPlot1(data){
+        plot1
+            .append('circle')
+            .attr('cx',30)
+            .attr('cy',height/2)
+            .attr('r',20)
+            .style('fill','blue');
 
+}
 
 
 //---------------------------------------------------------------------
     function dataLoaded(err, data) {
         if (err) console.error(err);
-console.log(data);
-// draw(drawPlot1);
+    console.log(data);
+
+    drawPlot1(data);
 
     }
 //-----------------------------------------------------------QUEUE
