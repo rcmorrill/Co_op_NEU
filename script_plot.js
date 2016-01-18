@@ -9,18 +9,23 @@ var scales= {};
 scales.xscore = d3.scale.ordinal().range([10, 50, 110, 150]).domain(["Minimally prepared", "Somewhat prepared", "Very prepared", "Highly prepared"]);
 
 function drawPlot1(data){
+    console.log(data)
         plot1.selectAll('.scores')
         .data(data)
        // , function(d){ return d.all_prep}) //it only works with the circle opacity when I add function(d) return d.all_prep
         .enter()
             .append('circle')
-            .attr('cx',function(d){ return scales.xscore(d.all_prep);}) //without the line above for .data it doesn't know what d.all_prep is
+            .attr('cx',function(d){ return scales.xscore(d.neu_prep);}) //without the line above for .data it doesn't know what d.all_prep is
             .attr('cy',height/2)
             .attr('r',20)
             .style('fill','blue')
-            .style('fill-opacity', .2);
+            .style('fill-opacity', .009); // for example to make sure they work
 
-    console.log('d', data.all_prep);
+    data.forEach(function(list_data){
+        console.log(list_data["all_prep"]);
+        
+    })
+    
         
 }
 
