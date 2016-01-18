@@ -2,27 +2,23 @@ var m = {t:250,r:50,b:250,l:50},
 	width = document.getElementById('plot').clientWidth - m.l - m.r,
 	height = document.getElementById('plot').clientHeight - m.t - m.b;
 
-//Make up some generic visualization here
-//it will respond to 
+// this is the area that does not move, it is the window at any size
 var plot = d3.select('.canvas')
 	.append('svg')
 	.attr('width',width+m.l+m.r)
 	.attr('height',height+m.t+m.b)
 	.append('g').attr('class','canvas')
 	.attr('transform','translate('+m.l+','+m.t+')');
-
-// var ball = plot.append('circle')
-// 	.attr('cx',0)
-// 	.attr('cy',height/2)
-// 	.attr('r',20)
-// 	.style('fill','white');
-
+	
+//this is the first plot, it is connected to the script_plot. 
+//Anything you add to script_plot in 'function drawPlot1(data) 
+//will show up in the area designated to this plot
 var plot1 = plot.append('g')
 	.attr('width',width+m.l+m.r)
 	.attr('height',height+m.t+m.b)
 	.attr('class','plot1')
 	.attr('id', 'plot1');
-	// .attr('transform','translate('+m.l+','+m.t+')');
+	.attr('transform','translate('+m.l+','+m.t+')');
 
 //Create scrollController
 //Step 1: create a global scroll controller
@@ -40,8 +36,8 @@ var scene1 = new ScrollMagic.Scene({
 	})
 	.on('enter',function(){
 		console.log('Enter Scene 1');
-		// d3.select('#plot').transition().style('background-image','url("data/NEU_Campus.jpg")');  
 		plot1.attr('visibility', 'hidden');
+		//this selects the empty h3 element in the div .canvas#plot of html file and keeps it empty
 		var text = d3.select('#plot')
 			text.select('h3').html("")
 
@@ -57,6 +53,7 @@ var scene2 = new ScrollMagic.Scene({
 		console.log('Enter Scene 2');
 		d3.select('#plot').transition().style('background','rgb(220,220,220)');
 		plot1.attr('visibility', 'hidden');
+		//this selects the empty h3 element in the div .canvas#plot of html file and adds text
 		var text = d3.select('#plot')
 			text.select('h3').html("90% of graduates from Northeastern University are offered full-time jobs within 1 year after graduation")
 	})
